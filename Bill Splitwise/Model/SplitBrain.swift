@@ -14,5 +14,11 @@ struct SplitBrain {
     var NumberOfPeople: Int = 2
     var ResultAmount: Float = 0.0
     
+    mutating func getBill() ->Float{
+        let TipAmount = (Float(BillAmount)!/100.00) * (Float(TipPerC))
+        let TotalAmount = (Float(BillAmount)!) + TipAmount
+        ResultAmount = TotalAmount / Float(NumberOfPeople)
+        return ResultAmount
+    }
 }
 

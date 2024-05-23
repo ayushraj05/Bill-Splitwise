@@ -17,15 +17,14 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ZeroPerCButton.isSelected = false
-        TenPerCButton.isSelected = false
-        TwentyPerCButton.isSelected = false
     }
     var splitBrain = SplitBrain()
 
     // TipPerC is initilised :)
     @IBAction func TipPerCisSelected(_ sender: UIButton) {
+        ZeroPerCButton.isSelected = false
+        TenPerCButton.isSelected = false
+        TwentyPerCButton.isSelected = false
         sender.isSelected = true
         if sender == ZeroPerCButton{
             splitBrain.TipPerC = 0
@@ -54,6 +53,10 @@ class CalculatorViewController: UIViewController {
     // Now the resultView page is prepared for the display :)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult"{
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.ResultTipPerC = "\(splitBrain.TipPerC) %"
+            destinationVC.ResultBillAmount = splitBrain.getBill()
+            destinationVC.ResultNumberOfPeople = splitBrain.NumberOfPeople
             
         }
     }
