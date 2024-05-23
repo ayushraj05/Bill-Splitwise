@@ -17,15 +17,44 @@ class CalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        ZeroPerCButton.isSelected = false
+        TenPerCButton.isSelected = false
+        TwentyPerCButton.isSelected = false
     }
-    
+    var splitBrain = SplitBrain()
 
+    // TipPerC is initilised :)
     @IBAction func TipPerCisSelected(_ sender: UIButton) {
+        sender.isSelected = true
+        if sender == ZeroPerCButton{
+            splitBrain.TipPerC = 0
+        }
+        else if sender == TenPerCButton{
+            splitBrain.TipPerC = 10
+        }
+        else{
+            splitBrain.TipPerC = 20
+        }
     }
-    
+    // NumberOfPeople is initilised :)
     @IBAction func numberOfPersonChanged(_ sender: UIStepper) {
+        SplitAmoungPeopleLable.text = "\(Int(sender.value))"
+        splitBrain.NumberOfPeople = Int(sender.value)
     }
     
+    // Now the result page is poped up to the screen :)
+    @IBAction func CalculateGotPressed(_ sender: UIButton) {
+        if Bill_InputTextField.text != "" {
+            splitBrain.BillAmount = Bill_InputTextField.text!
+        }
+        performSegue(withIdentifier: "goToResult", sender: self)
+    }
+    
+    // Now the resultView page is prepared for the display :)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult"{
+            
+        }
+    }
 }

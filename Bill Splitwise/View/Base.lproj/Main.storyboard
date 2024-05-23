@@ -80,7 +80,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-cU-y5M">
-                                                        <rect key="frame" x="105.33333333333333" y="0.0" width="179.33333333333337" height="54"/>
+                                                        <rect key="frame" x="105.33333333333331" y="0.0" width="179.33333333333337" height="54"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="54" id="Qyr-I4-lWI"/>
                                                         </constraints>
@@ -179,6 +179,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="CalculateGotPressed:" destination="aTM-gE-S3Y" eventType="touchUpInside" id="w7V-IX-9hI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IIM-UH-Ivw"/>
@@ -201,6 +204,7 @@
                         <outlet property="TenPerCButton" destination="ssT-cU-y5M" id="zha-8a-tfg"/>
                         <outlet property="TwentyPerCButton" destination="yqC-XS-1Db" id="o7t-u5-0QO"/>
                         <outlet property="ZeroPerCButton" destination="v9E-Fx-z2Q" id="dAR-87-Kdc"/>
+                        <segue destination="025-vo-s3n" kind="presentation" identifier="goToResult" id="eGF-DN-aqG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ks0-60-psz" sceneMemberID="firstResponder"/>
@@ -212,7 +216,7 @@
             <objects>
                 <viewController id="025-vo-s3n" customClass="ResultsViewController" customModule="Bill_Splitwise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rx4-G1-Lmn">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="922"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vea-pl-INH">
@@ -249,7 +253,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYP-q6-CAM">
-                                <rect key="frame" x="115" y="844" width="200" height="54"/>
+                                <rect key="frame" x="115" y="828" width="200" height="54"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="4H2-Pa-kq4"/>
@@ -263,7 +267,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="recalculatePressed:" destination="025-vo-s3n" eventType="touchUpInside" id="ib6-GI-ic9"/>
+                                    <action selector="RecalculateGotPressed:" destination="025-vo-s3n" eventType="touchUpInside" id="7Ts-Kt-K8A"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split between 2 people, with 10% tip." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9m-A7-i8Q">
@@ -281,7 +285,7 @@
                         <constraints>
                             <constraint firstItem="vea-pl-INH" firstAttribute="trailing" secondItem="zp1-ne-RaQ" secondAttribute="trailing" id="6IY-Jn-nRY"/>
                             <constraint firstItem="vea-pl-INH" firstAttribute="leading" secondItem="Rx4-G1-Lmn" secondAttribute="leading" id="7I3-2T-7QM"/>
-                            <constraint firstItem="VYP-q6-CAM" firstAttribute="bottom" secondItem="zp1-ne-RaQ" secondAttribute="bottom" id="EBw-Vg-zDU"/>
+                            <constraint firstItem="zp1-ne-RaQ" firstAttribute="bottom" secondItem="VYP-q6-CAM" secondAttribute="bottom" constant="40" id="EBw-Vg-zDU"/>
                             <constraint firstItem="n9m-A7-i8Q" firstAttribute="top" secondItem="vea-pl-INH" secondAttribute="bottom" constant="5" id="ZZr-Ml-mRS"/>
                             <constraint firstItem="VYP-q6-CAM" firstAttribute="centerX" secondItem="Rx4-G1-Lmn" secondAttribute="centerX" id="kEn-Kq-ard"/>
                             <constraint firstItem="vea-pl-INH" firstAttribute="top" secondItem="Rx4-G1-Lmn" secondAttribute="top" id="oTG-n6-nF4"/>
@@ -290,8 +294,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="settingsLabel" destination="n9m-A7-i8Q" id="2Au-PT-SFZ"/>
-                        <outlet property="totalLabel" destination="LQc-nS-n3y" id="xc3-kL-jSK"/>
+                        <outlet property="ResultAmountLable" destination="LQc-nS-n3y" id="0or-BA-SZV"/>
+                        <outlet property="SplitWithPersonLable" destination="n9m-A7-i8Q" id="53c-SC-4hI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0WU-RX-7Ta" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
